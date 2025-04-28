@@ -1,0 +1,147 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h1 { margin-bottom: 10px; }
+
+#timer {
+  font-size: 48px;
+  margin: 10px 0 20px;
+  background: linear-gradient(270deg, #ff8a00, #e52e71, #9b00ff, #00c6ff);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 8s ease infinite;
+}
+
+.timer-fast {
+  animation: gradientMove 1s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#question-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.tile-wrapper {
+  position: relative;
+  width: 300px;
+  height: 60px;
+}
+
+.question-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ddd;
+  color: #000;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 18px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.slide-out {
+  transform: translateX(300px);
+  opacity: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#stop-btn,
+#next-btn,
+#back-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#stop-btn { background: #c00; color: white; }
+#next-btn { background: #080; color: white; }
+#back-btn { background: #0066cc; color: white; }
+
+#times-up {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+  color: red;
+  font-weight: bold;
+  z-index: 1000;
+  animation: pop 1s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.flash-red {
+  animation: flashRed 1s infinite alternate;
+}
+
+@keyframes flashRed {
+  from { background-color: red; }
+  to   { background-color: darkred; }
+}
+
+/* Timer shake animation */
+.timer-shake {
+  animation: shake 0.3s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-2px, -2px); }
+  100% { transform: translate(2px, 2px); }
+}
